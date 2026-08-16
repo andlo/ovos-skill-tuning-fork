@@ -1,0 +1,3 @@
+play {frequency} hertz
+play a {frequency} hertz tone
+give me {frequency} hertz

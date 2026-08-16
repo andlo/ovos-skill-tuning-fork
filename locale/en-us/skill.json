@@ -5,12 +5,12 @@
   "pip_spec": "ovos-skill-tuning-fork",
   "license": "GPL-3.0-or-later",
   "author": "andlo",
-  "name": "TuningFork",
-  "description": "A reference-tone generator for OVOS - 'give me an A' plays a 440Hz tone (or any named musical note/frequency), useful for tuning instruments offline. Generated sine tone, no audio samples needed.",
+  "name": "Tuning Fork",
+  "description": "A reference-tone generator - give me an A plays 440Hz, play 300 hertz plays any frequency. Fully offline, generated tones, nothing recorded.",
   "examples": [
     "give me an A",
-    "play a concert A",
-    "play 440 hertz"
+    "play a C sharp",
+    "play 300 hertz"
   ],
   "tags": [
     "music",

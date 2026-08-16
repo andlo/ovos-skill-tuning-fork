@@ -5,17 +5,17 @@
   "pip_spec": "ovos-skill-tuning-fork",
   "license": "GPL-3.0-or-later",
   "author": "andlo",
-  "name": "TuningFork",
-  "description": "En referencetone-generator til OVOS - 'giv mig et A' spiller en 440Hz-tone (eller enhver navngiven node/frekvens), nyttig til at stemme instrumenter offline. Genereret sinustone, ingen lydsamples noedvendige.",
+  "name": "Stemmegaffel",
+  "description": "En referencetone-generator - giv mig et A spiller 440Hz, spil 300 hertz spiller enhver frekvens. Fuldstændig offline, genererede toner, ingen optagelser.",
   "examples": [
     "giv mig et A",
-    "spil et A",
-    "spil 440 hertz"
+    "spil et C skarp",
+    "spil 300 hertz"
   ],
   "tags": [
-    "music",
-    "tuning",
-    "reference tone",
+    "musik",
+    "stemning",
+    "referencetone",
     "instrument"
   ],
   "icon": "https://raw.githubusercontent.com/andlo/ovos-skill-tuning-fork/main/icon.png"

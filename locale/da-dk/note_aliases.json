@@ -1,0 +1,23 @@
+{
+  "_notes": [
+    "HIGH CONFIDENCE: Danish/German musical convention swaps H and B relative to English - Danish 'H' = English 'B' (natural), Danish 'B' = English 'Bb' (flat). This is NOT a translation error, it's the actual Danish/German note-naming tradition. Getting this backwards would be a real false-friend trap, same shape as the unit-conversion traps in ovos-skill-convert.",
+    "LOWER CONFIDENCE: the exact spelling of sharp/flat suffixes (ciss vs cis, ess vs es, the German-style contractions for As/Es) is a first pass, not verified against an authoritative Danish source - both plausible spellings are included below as aliases to hedge, pending review by someone who actually reads Danish sheet music."
+  ],
+  "a": "a", "koncert a": "a",
+  "aiss": "a#", "ais": "a#",
+  "b": "bb",
+  "h": "b",
+  "c": "c",
+  "ciss": "c#", "cis": "c#",
+  "dess": "db", "des": "db",
+  "d": "d",
+  "diss": "d#", "dis": "d#",
+  "ess": "eb", "es": "eb",
+  "e": "e",
+  "f": "f",
+  "fiss": "f#", "fis": "f#",
+  "gess": "gb", "ges": "gb",
+  "g": "g",
+  "giss": "g#", "gis": "g#",
+  "aess": "ab", "as": "ab"
+}

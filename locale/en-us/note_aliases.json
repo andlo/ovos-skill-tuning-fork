@@ -1,0 +1,17 @@
+{
+  "_notes": [
+    "Keys are spoken note names, values are the key in NOTE_SEMITONES (__init__.py). All resolve to octave 4 - see module docstring for why octave selection isn't supported yet."
+  ],
+  "a": "a", "concert a": "a",
+  "a sharp": "a#", "b flat": "bb",
+  "b": "b",
+  "c": "c",
+  "c sharp": "c#", "d flat": "db",
+  "d": "d",
+  "d sharp": "d#", "e flat": "eb",
+  "e": "e",
+  "f": "f",
+  "f sharp": "f#", "g flat": "gb",
+  "g": "g",
+  "g sharp": "g#", "a flat": "ab"
+}

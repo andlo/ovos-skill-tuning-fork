@@ -25,4 +25,6 @@ def skill(monkeypatch):
     monkeypatch.setattr(TuningFork, "lang", "en-us", raising=False)
     s.res_dir = str(Path(__file__).resolve().parents[1])
     s._lang_resources = {}
+    s._voc_cache = {}
+    s.skill_icon = ""
     return s

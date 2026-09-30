@@ -66,13 +66,16 @@ frequency regardless of note name, use "play {N} hertz" instead.
 
 import json
 import math
+import re
 import struct
 import tempfile
 import wave
 from pathlib import Path
 
-from ovos_workshop.skills import OVOSSkill
+from ovos_utils.ocp import MediaEntry, MediaType, PlaybackType
 from ovos_workshop.decorators import intent_handler
+from ovos_workshop.decorators.ocp import ocp_search
+from ovos_workshop.skills.common_play import OVOSCommonPlaybackSkill
 from ovos_number_parser import extract_number
 
 A4_FREQUENCY = 440.0
@@ -169,8 +172,69 @@ def _load_note_aliases_from_disk():
 
 NOTE_ALIASES = _load_note_aliases_from_disk()
 
+# "play a C sharp" / "play 300 hertz" is taken by the OCP pipeline before
+# padatious, so the skill also answers OCP's search (issue #3). The tone
+# is a short generated wav, so OCP plays the file itself
+# (PlaybackType.AUDIO) and handles stop. OCP only asks skills that support
+# the media type it guessed, so AUDIO, MUSIC and GENERIC are accepted and
+# the result echoes the query's type.
+OCP_MEDIA = [MediaType.AUDIO, MediaType.MUSIC, MediaType.GENERIC]
+OCP_CONFIDENCE = 100
 
-class TuningFork(OVOSSkill):
+
+class TuningFork(OVOSCommonPlaybackSkill):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, supported_media=OCP_MEDIA,
+                         skill_icon=str(SKILL_ROOT / "icon.png"), **kwargs)
+
+    def _ocp_match(self, phrase, lang):
+        """(title, frequency) when the phrase asks for a note or a
+        frequency and nothing else: "a c sharp", "a concert a",
+        "300 hertz", "a 440 hertz tone". Leftover words -> None."""
+        text = " ".join(re.findall(r"[\w#]+", (phrase or "").lower()))
+        filler = {w.lower() for w in self.voc_list("filler", lang)}
+        m = re.search(r"^(.*?)\b(\S+(?: \S+){0,2}) (?:hertz|hz)\b(.*)$", text)
+        if m:
+            freq = extract_number(m.group(2), lang=lang)
+            rest = (m.group(1) + " " + m.group(3)).split()
+            if freq in (False, None) or [w for w in rest if w not in filler]:
+                return None
+            freq = float(freq)
+            if not (MIN_FREQUENCY <= freq <= MAX_FREQUENCY):
+                return None
+            return f"{freq:g} Hz", freq
+        # strip filler only around the note - "a" is both an article
+        # and a note ("a concert a", "an a")
+        words = text.split()
+        while words and words[0] in filler and \
+                self._resolve_note(" ".join(words), lang) is None:
+            words.pop(0)
+        while words and words[-1] in filler and \
+                self._resolve_note(" ".join(words), lang) is None:
+            words.pop()
+        subject = " ".join(words)
+        note_key = self._resolve_note(subject, lang) if subject else None
+        if note_key is None:
+            return None
+        return subject, note_to_frequency(note_key)
+
+    @ocp_search()
+    def search_tone(self, phrase, media_type=MediaType.GENERIC):
+        match = self._ocp_match(phrase, self.lang)
+        if not match:
+            return []
+        title, freq = match
+        return [MediaEntry(
+            uri=f"file://{_tone_path_for_frequency(freq)}",
+            title=title,
+            artist="Tuning Fork",
+            media_type=media_type if media_type in OCP_MEDIA else MediaType.AUDIO,
+            playback=PlaybackType.AUDIO,
+            match_confidence=OCP_CONFIDENCE,
+            skill_icon=self.skill_icon,
+            skill_id=self.skill_id,
+        )]
 
     def _note_aliases_for(self, lang):
         lang = lang.lower()

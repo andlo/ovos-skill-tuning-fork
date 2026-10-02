@@ -1,6 +1,6 @@
 {"utterance": "giv mig et a", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note"}
 {"utterance": "giv mig en ciss", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note"}
-{"utterance": "spil et ess", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note"}
-{"utterance": "spil 440 hertz", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency"}
-{"utterance": "spil en 300 hertz tone", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency"}
+{"utterance": "spil et ess", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note", "intent_type": "ocp"}
+{"utterance": "spil 440 hertz", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency", "intent_type": "ocp"}
+{"utterance": "spil en 300 hertz tone", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency", "intent_type": "ocp"}
 {"utterance": "giv mig 261 hertz", "lang": "da-DK", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency"}

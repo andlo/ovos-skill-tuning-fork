@@ -1,6 +1,6 @@
 {"utterance": "give me an a", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note"}
 {"utterance": "give me a c sharp", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note"}
-{"utterance": "play an e flat", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note"}
-{"utterance": "play 440 hertz", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency"}
-{"utterance": "play a 300 hertz tone", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency"}
+{"utterance": "play an e flat", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "give_note", "intent_type": "ocp"}
+{"utterance": "play 440 hertz", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency", "intent_type": "ocp"}
+{"utterance": "play a 300 hertz tone", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency", "intent_type": "ocp"}
 {"utterance": "give me 261 hertz", "lang": "en-US", "skill_id": "ovos-skill-tuning-fork.andlo", "intent_label": "play_frequency"}
